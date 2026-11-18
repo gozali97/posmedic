@@ -238,3 +238,6 @@
     .lp-copyright { padding-bottom: 80px; }
 }
 @media (prefers-reduced-motion: reduce) { .pharmacy-landing .lp-button { transition: none; } }
+
+/* AOS slides elements in from the sides; keep that from widening the page on phones. clip (not hidden) keeps the header sticky. */
+.pharmacy-landing { overflow-x: clip; }

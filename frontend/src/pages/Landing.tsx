@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import './landing.css';
 
@@ -85,6 +87,9 @@ const navigation = [
     ['#kontak', 'Kontak'],
 ];
 
+/** AOS scroll-reveal attributes; `delay` staggers items of one row (ms). */
+const reveal = (effect = 'fade-up', delay = 0) => ({ 'data-aos': effect, ...(delay ? { 'data-aos-delay': delay } : {}) });
+
 function Icon({ name }: { name: string }) {
     return (
         <span className="material-symbols-outlined" aria-hidden="true">
@@ -95,6 +100,17 @@ function Icon({ name }: { name: string }) {
 
 export default function Landing() {
     const [menuOpen, setMenuOpen] = useState(false);
+
+    useEffect(() => {
+        AOS.init({
+            duration: 700,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 60,
+            // Respect "reduce motion": AOS then strips data-aos, so everything is shown at once.
+            disable: () => window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+        });
+    }, []);
 
     return (
         <div className="pharmacy-landing" id="beranda">
@@ -158,7 +174,7 @@ export default function Landing() {
                 <section className="lp-hero" aria-labelledby="lp-hero-title">
                     <img className="lp-hero-photo" src={photos.pharmacist} alt="Apoteker bekerja di antara rak obat" fetchPriority="high" />
                     <div className="lp-container lp-hero-inner">
-                        <div className="lp-hero-copy">
+                        <div className="lp-hero-copy" {...reveal()}>
                             <p className="lp-eyebrow">APOTEK & KESEHATAN KELUARGA</p>
                             <h1 id="lp-hero-title">
                                 Sahabat Sehat<span>untuk Keluarga Anda</span>
@@ -173,8 +189,8 @@ export default function Landing() {
 
                 <div className="lp-highlights" aria-label="Layanan apotek">
                     <div className="lp-wide">
-                        {highlights.map(([icon, title, text]) => (
-                            <div className="lp-highlight" key={title}>
+                        {highlights.map(([icon, title, text], i) => (
+                            <div className="lp-highlight" key={title} {...reveal('fade-up', i * 80)}>
                                 <Icon name={icon} />
                                 <div>
                                     <strong>{title}</strong>
@@ -186,13 +202,13 @@ export default function Landing() {
                 </div>
 
                 <section className="lp-services lp-wide" id="layanan" aria-labelledby="lp-services-title">
-                    <div className="lp-section-heading">
+                    <div className="lp-section-heading" {...reveal()}>
                         <h2 id="lp-services-title">Layanan Apotek & Kesehatan Keluarga</h2>
                         <p>Kebutuhan kesehatan Anda dan keluarga, mulai dari sini</p>
                     </div>
                     <div className="lp-service-grid">
-                        {services.map((service) => (
-                            <article className="lp-service-card" key={service.title}>
+                        {services.map((service, i) => (
+                            <article className="lp-service-card" key={service.title} {...reveal('fade-up', i * 100)}>
                                 <img src={service.image} alt={service.alt} loading="lazy" width="600" height="600" />
                                 <div className="lp-service-body">
                                     <h3>{service.title}</h3>
@@ -204,18 +220,18 @@ export default function Landing() {
                             </article>
                         ))}
                     </div>
-                    <a className="lp-button lp-services-more" href="#tentang">
+                    <a className="lp-button lp-services-more" href="#tentang" {...reveal()}>
                         Kenali Apotek Kami
                     </a>
                 </section>
 
                 <section className="lp-about lp-container" id="tentang" aria-labelledby="lp-about-title">
                     <div className="lp-about-intro">
-                        <figure>
+                        <figure {...reveal('fade-right')}>
                             <img src={photos.pharmacy} alt="Suasana pelayanan di sebuah apotek" loading="lazy" width="1000" height="680" />
                             <figcaption>Foto ilustrasi pelayanan apotek</figcaption>
                         </figure>
-                        <div>
+                        <div {...reveal('fade-left', 100)}>
                             <p className="lp-eyebrow">KENAPA KAMI</p>
                             <h2 id="lp-about-title">
                                 Lebih Dekat dengan
@@ -229,8 +245,8 @@ export default function Landing() {
                         </div>
                     </div>
                     <div className="lp-benefits">
-                        {benefits.map(([icon, title, text]) => (
-                            <div className="lp-benefit" key={title}>
+                        {benefits.map(([icon, title, text], i) => (
+                            <div className="lp-benefit" key={title} {...reveal('fade-up', (i % 3) * 100)}>
                                 <Icon name={icon} />
                                 <div>
                                     <h3>{title}</h3>
@@ -243,18 +259,18 @@ export default function Landing() {
 
                 <section className="lp-reviews" id="ulasan" aria-labelledby="lp-reviews-title">
                     <div className="lp-container">
-                        <div className="lp-section-heading">
+                        <div className="lp-section-heading" {...reveal()}>
                             <p className="lp-eyebrow">CERITA PELANGGAN</p>
                             <h2 id="lp-reviews-title">Pengalaman Anda Berarti bagi Kami</h2>
                         </div>
-                        <div className="lp-review-empty">
+                        <div className="lp-review-empty" {...reveal('zoom-in')}>
                             <Icon name="forum" />
                             <p>Belum ada ulasan pelanggan yang dipublikasikan.</p>
                             <span>Bagikan pengalaman dan masukan Anda kepada petugas saat berkunjung.</span>
                         </div>
                         <div className="lp-gallery" aria-label="Ilustrasi kebutuhan kesehatan">
-                            {services.slice(0, 4).map((service) => (
-                                <figure key={service.title}>
+                            {services.slice(0, 4).map((service, i) => (
+                                <figure key={service.title} {...reveal('fade-up', i * 100)}>
                                     <img src={service.image} alt={service.alt} loading="lazy" width="420" height="480" />
                                     <figcaption>{service.title}</figcaption>
                                 </figure>
@@ -265,7 +281,7 @@ export default function Landing() {
                 </section>
 
                 <section className="lp-faq lp-container" id="faq" aria-labelledby="lp-faq-title">
-                    <div className="lp-section-heading">
+                    <div className="lp-section-heading" {...reveal()}>
                         <p className="lp-eyebrow">FAQ</p>
                         <h2 id="lp-faq-title">
                             Pertanyaan yang Sering
@@ -275,7 +291,7 @@ export default function Landing() {
                     </div>
                     <div className="lp-questions">
                         {questions.map(([question, answer], index) => (
-                            <details key={question} name="pharmacy-faq" open={index === 0}>
+                            <details key={question} name="pharmacy-faq" open={index === 0} {...reveal('fade-up', index * 60)}>
                                 <summary>
                                     {question}
                                     <Icon name="expand_more" />
@@ -287,7 +303,7 @@ export default function Landing() {
                 </section>
 
                 <section className="lp-contact lp-container" id="kontak" aria-labelledby="lp-contact-title">
-                    <div className="lp-contact-banner">
+                    <div className="lp-contact-banner" {...reveal('zoom-in')}>
                         <img src={photos.pharmacist} alt="Ilustrasi apoteker di ruang pelayanan" loading="lazy" width="400" height="400" />
                         <div>
                             <h2 id="lp-contact-title">
@@ -301,7 +317,7 @@ export default function Landing() {
                             Informasi Pelayanan <Icon name="arrow_forward" />
                         </a>
                     </div>
-                    <div className="lp-contact-status">
+                    <div className="lp-contact-status" {...reveal()}>
                         <Icon name="info" />
                         <p>Alamat, nomor kontak, dan jam operasional apotek belum tersedia.</p>
                     </div>
@@ -309,7 +325,7 @@ export default function Landing() {
             </main>
 
             <footer className="lp-footer lp-container">
-                <div className="lp-category-strip">
+                <div className="lp-category-strip" {...reveal()}>
                     <span>Kebutuhan kesehatan Anda:</span>
                     <strong>Obat & Resep</strong>
                     <strong>Vitamin</strong>

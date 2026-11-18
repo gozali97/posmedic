@@ -1,16 +1,16 @@
 import { useState, type FormEvent } from 'react';
-import { useLocation, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { login } from '@/store/authSlice';
+import './login.css';
 
 interface FormErrors {
     username?: string;
     password?: string;
 }
 
-/** Ported from Trezo Authentication/SignInForm: username instead of email, no social/sign-up/forgot links. */
 const Login = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
@@ -47,24 +47,60 @@ const Login = () => {
     };
 
     return (
-        <div className="auth-main-content bg-gray-50 dark:bg-[#0a0e19] min-h-screen flex items-center justify-center px-[15px] py-[40px]">
-            <div className="w-full max-w-[420px]">
-                <div className="bg-white dark:bg-[#0c1427] border border-gray-100 dark:border-[#172036] rounded-md shadow-sm p-[25px] md:p-[35px]">
-                    <div className="text-center mb-[25px]">
-                        <img src="/images/icon.png" alt="" width={72} height={72} className="w-[72px] h-[72px] object-contain mx-auto mb-[10px]" />
-                        <p className="font-bold text-black dark:text-white text-lg !mb-[15px]">POS Apotek</p>
-                        <h1 className="!font-semibold !text-xl !mb-[5px]">Masuk ke akun Anda</h1>
-                        <p className="text-[#445164] dark:text-gray-400 !mb-0">Gunakan username dan password Anda.</p>
+        <div className="auth-main-content pharmacy-login">
+            <section className="login-identity" aria-labelledby="login-brand-title">
+                <Link to="/" className="login-brand" aria-label="POS Apotek, beranda">
+                    <span className="login-brand-mark material-symbols-outlined" aria-hidden="true">
+                        local_pharmacy
+                    </span>
+                    <span>POS APOTEK</span>
+                </Link>
+                <div className="login-title">
+                    <span className="login-eyebrow">DI BALIK SETIAP PELAYANAN</span>
+                    <h1 id="login-brand-title">
+                        POS Apotek<span>.</span>
+                    </h1>
+                    <p>Hari yang baik dimulai dengan pelayanan yang baik.</p>
+                </div>
+                <figure className="login-photo">
+                    <img src="/images/landing/1ZOMOXPNDS.jpg" alt="Obat tablet dalam kemasan blister" width={960} height={640} />
+                    <figcaption>
+                        <span>KESEHATAN, SETIAP HARI.</span>
+                        <span className="material-symbols-outlined" aria-hidden="true">
+                            add
+                        </span>
+                    </figcaption>
+                </figure>
+                <div className="login-identity-footer">
+                    <span>Untuk tim apotek.</span>
+                    <span>Dengan penuh perhatian.</span>
+                </div>
+            </section>
+            <section className="login-access" aria-labelledby="login-form-title">
+                <Link to="/" className="login-back">
+                    <span className="material-symbols-outlined" aria-hidden="true">
+                        arrow_back
+                    </span>
+                    Beranda
+                </Link>
+                <div className="login-form-wrap">
+                    <div className="login-form-heading">
+                        <span className="login-eyebrow">AKSES STAF</span>
+                        <h2 id="login-form-title">
+                            Selamat datang
+                            <br />
+                            kembali.
+                        </h2>
+                        <p>Masuk ke akun apotek Anda.</p>
                     </div>
 
                     <div>
                         <form onSubmit={handleSubmit} noValidate>
                             {serverError && (
-                                <div
-                                    className="mb-[15px] rounded-md bg-danger-50 dark:bg-danger-900/30 text-danger-700 dark:text-danger-300 px-[17px] py-[12px] flex items-center gap-[8px]"
-                                    role="alert"
-                                >
-                                    <i className="material-symbols-outlined !text-[20px]">error</i>
+                                <div className="login-error" role="alert">
+                                    <i className="material-symbols-outlined !text-[20px]" aria-hidden="true">
+                                        error
+                                    </i>
                                     {serverError}
                                 </div>
                             )}
@@ -79,7 +115,7 @@ const Login = () => {
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value.replace(/\s/g, ''))}
                                 error={errors.username}
-                                wrapperClassName="mb-[15px]"
+                                wrapperClassName="login-field"
                             />
                             <Input
                                 label="Password"
@@ -90,17 +126,35 @@ const Login = () => {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 error={errors.password}
-                                wrapperClassName="mb-[15px]"
+                                wrapperClassName="login-field"
                             />
 
-                            <Button type="submit" icon="login" loading={loading} className="w-full mt-[10px]">
-                                Masuk
+                            <Button type="submit" loading={loading} className="login-submit" aria-busy={loading}>
+                                {loading ? 'Memeriksa akun...' : 'Masuk'}
+                                {!loading && (
+                                    <span className="material-symbols-outlined" aria-hidden="true">
+                                        arrow_forward
+                                    </span>
+                                )}
                             </Button>
                         </form>
                     </div>
+                    <div className="login-help">
+                        <span className="material-symbols-outlined" aria-hidden="true">
+                            support_agent
+                        </span>
+                        <p>
+                            Lupa password atau perlu akses?
+                            <br />
+                            <strong>Hubungi admin apotek Anda.</strong>
+                        </p>
+                    </div>
                 </div>
-                <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-[20px] !mb-0">Lupa password? Hubungi admin apotek.</p>
-            </div>
+                <footer className="login-footer">
+                    <span>POS Apotek</span>
+                    <span>Khusus pengguna berwenang</span>
+                </footer>
+            </section>
         </div>
     );
 };

@@ -1,0 +1,74 @@
+.pharmacy-login {
+    --login-ink: #202c28;
+    --login-muted: #626b67;
+    --login-green: #155d42;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    min-height: 100svh;
+    background: #fcfdfc;
+    color: var(--login-ink);
+    color-scheme: light;
+    letter-spacing: 0;
+}
+.pharmacy-login :is(h1, h2, p, figure) { margin: 0; }
+.pharmacy-login a { text-decoration: none; }
+.pharmacy-login :is(a, button, input):focus-visible { outline: 3px solid #b67b12; outline-offset: 4px; }
+.login-identity { padding: 40px 56px 28px; background: #edf1ed; display: flex; flex-direction: column; min-width: 0; }
+.login-brand { display: inline-flex; align-items: center; gap: 12px; align-self: flex-start; color: var(--login-green); font-size: 13px; font-weight: 700; }
+.login-brand-mark { width: 38px; height: 38px; display: grid; place-items: center; color: #fff; background: var(--login-green); border-radius: 4px; font-size: 23px; }
+.login-title { padding-block: 64px 36px; }
+.login-eyebrow { display: block; font-size: 11px; font-weight: 600; line-height: 1.6; }
+.login-title .login-eyebrow { color: #506457; }
+.pharmacy-login .login-title h1 { color: var(--login-green); font: 400 64px/1.14 Georgia, 'Times New Roman', serif; margin: 16px 0; }
+.login-title h1 span { color: #a26c12; }
+.login-title p { color: #44554c; font-size: 15px; line-height: 1.8; max-width: 310px; }
+.login-photo { position: relative; flex: 1; min-height: 230px; overflow: hidden; background: #d7dfda; }
+.login-photo img { position: absolute; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.login-photo figcaption { position: absolute; bottom: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 20px; background: #155d42; color: #fff; font-size: 10px; font-weight: 600; }
+.login-photo .material-symbols-outlined { color: #efcf78; font-size: 24px; }
+.login-identity-footer { display: flex; justify-content: space-between; gap: 16px; padding-top: 22px; font-size: 11px; color: #526158; }
+.login-access { padding: 40px 48px 28px; display: flex; flex-direction: column; min-width: 0; }
+.login-back { display: inline-flex; gap: 8px; align-items: center; align-self: flex-end; min-height: 38px; color: var(--login-muted); font-size: 12px; }
+.login-back:hover { color: var(--login-green); }
+.login-back .material-symbols-outlined { font-size: 18px; }
+.login-form-wrap { width: 100%; max-width: 380px; margin: auto; padding-block: 48px; animation: login-arrive .4s ease-out both; }
+.login-form-heading { margin-bottom: 34px; }
+.login-form-heading .login-eyebrow { color: var(--login-green); display: flex; align-items: center; gap: 10px; }
+.login-form-heading .login-eyebrow::before { content: ''; width: 22px; height: 2px; background: #b67b12; }
+.pharmacy-login .login-form-heading h2 { font-size: 36px; font-weight: 600; line-height: 1.25; margin: 16px 0 12px; color: var(--login-ink); }
+.login-form-heading p { font-size: 14px; line-height: 1.6; color: var(--login-muted); }
+.login-field { margin-bottom: 22px; }
+.pharmacy-login .login-field label { font-size: 13px; color: var(--login-ink); margin-bottom: 8px; }
+.pharmacy-login .login-field input { height: 52px; border-radius: 4px; background: #fff; border-color: #b8c3bc; color: var(--login-ink); padding-inline: 14px; font-size: 16px; }
+.pharmacy-login .login-field input[name='password'] { padding-right: 54px; }
+.pharmacy-login .login-field input::placeholder { color: #737c77; font-size: 14px; }
+.pharmacy-login .login-field input:focus { border-color: var(--login-green); }
+.pharmacy-login .login-field input[aria-invalid='true'] { border-color: #b42318; }
+.pharmacy-login .login-field input:autofill { -webkit-box-shadow: 0 0 0 100px #f1f6f2 inset; -webkit-text-fill-color: var(--login-ink); }
+.pharmacy-login .login-field button { width: 44px; height: 44px; right: 4px; color: #59675e; display: grid; place-items: center; }
+.pharmacy-login .login-submit { width: 100%; min-height: 52px; margin-top: 6px; padding: 12px 18px; border-radius: 4px; background: var(--login-green); border-color: var(--login-green); color: #fff; display: flex; gap: 12px; }
+.login-submit > span { margin-left: auto; font-size: 20px; }
+.pharmacy-login .login-submit:hover { background: #104932; border-color: #104932; }
+.login-help { display: flex; gap: 12px; margin-top: 28px; padding-top: 24px; border-top: 1px solid #e0e6e1; align-items: flex-start; color: var(--login-muted); }
+.login-help .material-symbols-outlined { font-size: 22px; margin-top: 3px; }
+.login-help p { font-size: 12px; line-height: 1.8; }
+.login-help strong { color: #374a3e; font-weight: 500; }
+.login-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 11px; color: var(--login-muted); }
+.login-error { padding: 12px 14px; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 8px; border-left: 3px solid #b42318; background: #fff0ee; color: #992b22; font-size: 13px; line-height: 1.6; }
+@keyframes login-arrive { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .login-form-wrap { animation: none; } }
+@media (min-width: 1600px) { .login-identity { padding-inline: 80px; } .login-title { padding-top: 88px; } }
+@media (max-width: 1050px) { .login-identity { padding-inline: 32px; } .login-access { padding-inline: 32px; } .pharmacy-login .login-title h1 { font-size: 48px; } }
+@media (max-width: 760px) {
+    .pharmacy-login { display: flex; flex-direction: column; }
+    .login-identity { position: relative; padding: 24px; min-height: 116px; justify-content: center; }
+    .login-brand { z-index: 1; }
+    .login-title, .login-identity-footer { display: none; }
+    .login-photo { position: absolute; inset: 0 0 0 auto; width: 30%; min-height: 0; }
+    .login-photo figcaption { display: none; }
+    .login-photo img { object-position: center; }
+    .login-access { padding: 20px 24px 24px; flex: 1; }
+    .login-form-wrap { padding-block: 30px 44px; }
+    .pharmacy-login .login-form-heading h2 { font-size: 30px; }
+    .login-back { min-height: 44px; }
+}
