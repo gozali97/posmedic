@@ -1,0 +1,240 @@
+.pharmacy-landing {
+    --lp-green: #13b66a;
+    --lp-dark: #087844;
+    --lp-heading: #096d43;
+    --lp-text: #617d72;
+    font-family: 'Poppins', 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--lp-text);
+    background: #fff;
+    color-scheme: light;
+}
+.pharmacy-landing * { box-sizing: border-box; }
+.pharmacy-landing :is(h1, h2, h3, p, figure) { margin: 0; }
+.pharmacy-landing :is(h1, h2, h3) { color: var(--lp-heading); }
+.pharmacy-landing :is(a, button, summary):focus-visible { outline: 3px solid #075a38; outline-offset: 5px; }
+.pharmacy-landing a { text-decoration: none; }
+.pharmacy-landing section, .pharmacy-landing main { scroll-margin-top: 110px; }
+.pharmacy-landing .material-symbols-outlined { flex-shrink: 0; font-size: 24px; font-weight: 300; }
+.lp-container { width: min(1140px, calc(100% - 48px)); margin-inline: auto; }
+.lp-wide { width: min(1340px, calc(100% - 48px)); margin-inline: auto; }
+.lp-skip { position: fixed; z-index: 50; top: -100px; left: 20px; padding: 12px 20px; background: #fff; color: var(--lp-dark); }
+.lp-skip:focus { top: 12px; }
+.lp-topbar { background: var(--lp-dark); color: #fff; font-size: 11px; }
+.lp-topbar .lp-container { min-height: 37px; display: flex; align-items: center; gap: 26px; }
+.lp-topbar :is(span, a) { display: inline-flex; align-items: center; gap: 8px; }
+.lp-topbar .material-symbols-outlined { font-size: 16px; }
+.lp-header { position: sticky; top: 0; z-index: 20; background: #fbfefd; border-bottom: 1px solid #edf5f0; }
+.lp-header-inner { min-height: 96px; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+.lp-brand { font-size: 43px; line-height: 1; font-weight: 800; letter-spacing: -2px; color: var(--lp-heading); }
+.lp-brand span { color: var(--lp-green); }
+.lp-nav { display: flex; flex: 1; align-items: center; justify-content: space-between; gap: 30px; }
+.lp-nav > a:not(.lp-button) { color: #254d3d; text-transform: uppercase; font-size: 12px; font-weight: 600; padding-block: 10px; }
+.lp-nav > a:first-child { color: var(--lp-dark); box-shadow: 0 1px var(--lp-green); }
+.lp-nav > a:hover { color: var(--lp-green); }
+.pharmacy-landing .lp-button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 44px; padding: 11px 27px; border-radius: 4px; background: #0c9a55; color: white; font-size: 14px; font-weight: 500; line-height: 1.5; transition: background .18s; }
+.pharmacy-landing .lp-button:hover { background: #087a44; }
+.pharmacy-landing .lp-button .material-symbols-outlined { font-size: 19px; }
+.pharmacy-landing .lp-login { padding-inline: 18px; font-size: 12px; }
+.lp-menu-toggle { display: none; color: var(--lp-dark); padding: 10px; background: transparent; border: 0; }
+.lp-hero { min-height: 720px; position: relative; isolation: isolate; overflow: hidden; }
+.lp-hero-photo { position: absolute; inset: 0 0 0 auto; width: 65%; height: 100%; object-fit: cover; object-position: 50% 38%; z-index: -2; }
+.lp-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #fff 18%, #fff 31%, #ffffffed 42%, #ffffff9c 53%, #ffffff15 70%, transparent 82%); z-index: -1; }
+.lp-hero-inner { min-height: 720px; display: flex; align-items: center; padding: 80px 20px; }
+.lp-hero-copy { width: 560px; max-width: 100%; }
+.pharmacy-landing .lp-eyebrow { margin-bottom: 18px; font-size: 15px; font-weight: 600; line-height: 1.5; color: #089a51; }
+.lp-hero h1 { font-size: 54px; line-height: 1.17; font-weight: 800; letter-spacing: -.8px; margin-bottom: 24px; }
+.lp-hero h1 span { display: block; color: #11ad61; font-size: 43px; margin-top: 6px; }
+.lp-hero-copy > p:not(.lp-eyebrow) { max-width: 540px; color: #355c4b; line-height: 1.6; }
+.lp-hero .lp-button { margin-top: 34px; }
+.lp-highlights { background: var(--lp-green); color: white; }
+.lp-highlights .lp-wide { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; min-height: 107px; align-items: center; }
+.lp-highlight { display: flex; gap: 12px; align-items: center; }
+.lp-highlight > .material-symbols-outlined { font-size: 43px; }
+.lp-highlight strong, .lp-highlight div > span { display: block; }
+.lp-highlight strong { font-size: 15px; font-weight: 600; }
+.lp-highlight div > span { font-size: 12px; }
+.lp-section-heading { text-align: center; margin-bottom: 26px; }
+.pharmacy-landing h2 { font-size: 43px; font-weight: 800; line-height: 1.13; letter-spacing: -.7px; }
+.lp-section-heading > p:not(.lp-eyebrow) { margin-top: 20px; color: #416654; }
+.lp-services { padding-top: 98px; text-align: center; }
+.lp-service-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; text-align: left; }
+.lp-service-card { border-radius: 7px 7px 12px 12px; box-shadow: 0 2px 10px #162e211f; overflow: hidden; background: white; }
+.lp-service-card > img { display: block; width: 100%; aspect-ratio: 1; height: auto; object-fit: cover; }
+.lp-service-card:nth-child(2) > img { object-position: center 30%; }
+.lp-service-body { padding: 20px 20px 36px; }
+.lp-service-body h3 { font-size: 15px; font-weight: 600; line-height: 1.45; margin-bottom: 16px; }
+.lp-service-body p { font-size: 12px; line-height: 1.6; min-height: 96px; }
+.pharmacy-landing .lp-service-body .lp-button { margin-top: 18px; font-size: 12px; padding: 11px 17px; }
+.pharmacy-landing .lp-services-more { margin-top: 22px; }
+.lp-about { padding-top: 120px; padding-bottom: 150px; }
+.lp-about-intro { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 50px; }
+.lp-about-intro figure { position: relative; }
+.lp-about-intro img { width: 100%; height: 375px; object-fit: cover; border-radius: 10px; }
+.lp-about-intro figcaption { position: absolute; bottom: 12px; left: 12px; color: white; background: #183f31d9; padding: 3px 8px; border-radius: 3px; font-size: 10px; }
+.lp-about-intro h2 { margin-bottom: 22px; }
+.lp-about-intro p:not(.lp-eyebrow) { font-size: 14px; line-height: 1.7; }
+.lp-about-intro .lp-button { margin-top: 32px; }
+.lp-benefits { margin-top: 145px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px 36px; }
+.lp-benefit { display: flex; gap: 12px; align-items: flex-start; }
+.lp-benefit > .material-symbols-outlined { background: #f7f8e8; color: #139351; padding: 12px; border-radius: 8px; font-size: 38px; }
+.lp-benefit h3 { font-size: 18px; line-height: 1.3; font-weight: 600; }
+.lp-benefit p { font-size: 14px; line-height: 1.6; margin-top: 3px; }
+.lp-reviews { position: relative; background: #e0f2e8; padding: 135px 0 115px; clip-path: polygon(0 0, 100% 6%, 100% 100%, 0 94%); }
+.lp-reviews::before { content: ''; position: absolute; inset: 0; background: #d4ecde; clip-path: polygon(0 16%, 100% 6%, 100% 86%, 0 94%); z-index: -1; }
+.lp-review-empty { text-align: center; margin: 55px auto 65px; max-width: 650px; }
+.lp-review-empty > .material-symbols-outlined { font-size: 38px; color: #0b9754; margin-bottom: 15px; }
+.lp-review-empty p { color: #3c6851; font-size: 16px; margin-bottom: 10px; }
+.lp-review-empty > span:last-child { font-size: 13px; }
+.lp-gallery { max-width: 990px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.lp-gallery figure { border: 2px solid #6e9a81; border-radius: 20px; overflow: hidden; background: white; }
+.lp-gallery img { width: 100%; height: 250px; object-fit: cover; }
+.lp-gallery figcaption { padding: 16px 12px; font-weight: 500; font-size: 13px; color: #2c6044; }
+.pharmacy-landing .lp-photo-note { text-align: center; font-size: 11px; margin-top: 20px; }
+.lp-faq { padding-top: 150px; padding-bottom: 140px; }
+.lp-faq h2 { font-size: 32px; }
+.lp-faq .lp-eyebrow { font-size: 12px; margin-bottom: 14px; }
+.lp-questions { max-width: 550px; margin: 0 auto; }
+.lp-questions details { margin-bottom: 6px; }
+.lp-questions summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; list-style: none; cursor: pointer; min-height: 48px; border: 1px solid #d9eee2; padding: 12px 17px; border-radius: 7px; color: #3c5147; font-size: 12px; font-weight: 500; }
+.lp-questions summary::-webkit-details-marker { display: none; }
+.lp-questions summary .material-symbols-outlined { font-size: 20px; }
+.lp-questions details[open] summary { background: #0c9a55; border-color: #0c9a55; color: white; }
+.lp-questions details[open] summary .material-symbols-outlined { transform: rotate(180deg); }
+.lp-questions details > p { border: 1px solid #d9eee2; border-radius: 7px; padding: 18px; margin-top: 5px; font-size: 12px; line-height: 1.7; }
+.lp-contact-banner { display: flex; align-items: center; gap: 35px; background: linear-gradient(110deg, #0cab62, #075a3b); border-radius: 28px; overflow: hidden; min-height: 230px; padding: 0 38px 0 0; color: white; }
+.lp-contact-banner > img { width: 240px; height: 230px; align-self: stretch; object-fit: cover; object-position: 50% 30%; mask-image: linear-gradient(90deg, black 70%, transparent); }
+.lp-contact-banner > div { flex: 1; padding-block: 30px; }
+.pharmacy-landing .lp-contact-banner h2 { font-size: 30px; color: white; }
+.lp-contact-banner p { margin-top: 14px; font-size: 12px; line-height: 1.7; }
+.pharmacy-landing .lp-button-light { background: white; color: #08663e; font-size: 12px; padding-inline: 19px; }
+.pharmacy-landing .lp-button-light:hover { background: #e0f2e8; }
+.lp-contact-status { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 12px; margin-top: 20px; }
+.lp-contact-status .material-symbols-outlined { font-size: 17px; }
+.lp-category-strip { display: flex; align-items: center; justify-content: space-between; gap: 25px; padding-block: 75px 55px; }
+.lp-category-strip > span { font-size: 12px; }
+.lp-category-strip strong { font-size: 17px; color: #41775b; font-weight: 600; }
+.lp-footer-grid { display: grid; grid-template-columns: 1.5fr .9fr 1fr 1.4fr; gap: 45px; padding-bottom: 55px; color: #355c48; }
+.lp-footer-grid .lp-brand { display: inline-block; margin-bottom: 28px; }
+.lp-footer-grid p { font-size: 12px; line-height: 1.8; }
+.lp-footer-grid h3 { font-size: 15px; font-weight: 600; margin: 0 0 20px; }
+.lp-footer-grid > div > a:not(.lp-brand) { display: block; font-size: 12px; margin-bottom: 13px; }
+.lp-footer a:hover { color: #0c9a55; }
+.lp-footer-grid .lp-staff-link { margin-top: 20px; }
+.lp-staff-link .material-symbols-outlined { font-size: 18px; vertical-align: middle; margin-right: 5px; }
+.lp-photo-credits { font-size: 11px; margin-top: 15px; }
+.lp-photo-credits summary { cursor: pointer; padding-block: 8px; }
+.lp-photo-credits a { display: block; padding-block: 5px; text-decoration: underline; }
+.lp-copyright { border-top: 1px solid #d9eee2; padding: 26px 0 32px; text-align: center; font-size: 11px; color: #355c48; }
+.lp-floating-contact { position: fixed; z-index: 25; right: 30px; bottom: 30px; display: flex; align-items: center; gap: 8px; }
+.lp-floating-contact > span:first-child { padding: 9px 12px; font-size: 11px; color: #355c48; background: white; box-shadow: 0 2px 9px #00000012; border-radius: 3px; }
+.lp-floating-contact > .material-symbols-outlined { width: 56px; height: 56px; display: grid; place-items: center; color: white; background: #0d9c52; border-radius: 50%; font-size: 28px; box-shadow: 0 3px 12px #00000026; }
+@media (min-width: 1600px) { .lp-hero-photo { object-position: 50% 35%; } }
+@media (max-width: 1100px) {
+    .lp-nav { gap: 18px; }
+    .lp-header-inner { gap: 20px; }
+    .lp-hero h1 { font-size: 48px; }
+    .lp-hero h1 span { font-size: 38px; }
+    .lp-hero-copy { width: 500px; }
+    .lp-highlight { gap: 8px; }
+    .lp-highlight > .material-symbols-outlined { font-size: 31px; }
+    .lp-highlight strong { font-size: 12px; }
+    .lp-highlight div > span { font-size: 10px; }
+    .lp-service-body { padding: 18px 12px 25px; }
+    .lp-service-body p { min-height: 120px; }
+    .pharmacy-landing .lp-service-body .lp-button { padding-inline: 10px; font-size: 11px; }
+    .pharmacy-landing h2 { font-size: 36px; }
+    .lp-benefits { gap: 35px 24px; }
+    .lp-benefit h3 { font-size: 16px; }
+    .lp-contact-banner { gap: 20px; padding-right: 25px; }
+    .lp-contact-banner > img { width: 180px; }
+    .lp-footer-grid { gap: 25px; }
+}
+@media (max-width: 800px) {
+    .lp-container, .lp-wide { width: calc(100% - 40px); }
+    .lp-topbar .lp-container { justify-content: center; }
+    .lp-topbar a { display: none; }
+    .lp-header-inner { min-height: 78px; }
+    .lp-brand { font-size: 36px; }
+    .lp-menu-toggle { display: inline-flex; }
+    .lp-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 18px 24px 25px; border-bottom: 1px solid #d9eee2; box-shadow: 0 8px 10px #1637230d; }
+    .lp-nav.is-open { display: flex; flex-direction: column; align-items: stretch; gap: 6px; }
+    .lp-nav > a:first-child { box-shadow: none; }
+    .lp-nav > a:not(.lp-button) { padding: 12px 0; }
+    .lp-hero, .lp-hero-inner { min-height: 650px; }
+    .lp-hero-inner { padding: 60px 0; }
+    .lp-hero-photo { width: 80%; }
+    .lp-hero::after { background: linear-gradient(90deg, white 0%, #fffffff2 25%, #ffffffa3 53%, #ffffff10 100%); }
+    .lp-hero-copy { width: 470px; }
+    .lp-highlights .lp-wide { grid-template-columns: repeat(3, 1fr); padding-block: 25px; gap: 24px; }
+    .lp-service-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .lp-service-body p { min-height: 100px; }
+    .lp-about-intro { gap: 25px; }
+    .lp-about-intro img { height: 340px; }
+    .pharmacy-landing h2 { font-size: 32px; }
+    .lp-benefits { grid-template-columns: repeat(2, 1fr); margin-top: 75px; }
+    .lp-gallery { gap: 12px; }
+    .lp-gallery img { height: 190px; }
+    .lp-gallery figcaption { font-size: 11px; padding: 12px 8px; }
+    .lp-contact-banner { flex-wrap: wrap; padding: 30px; gap: 20px; }
+    .lp-contact-banner > img { display: none; }
+    .lp-contact-banner > div { padding: 0; min-width: 240px; }
+    .lp-category-strip { flex-wrap: wrap; justify-content: center; padding-block: 55px; }
+    .lp-category-strip > span { width: 100%; text-align: center; }
+    .lp-category-strip strong { font-size: 14px; }
+    .lp-footer-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+}
+@media (max-width: 540px) {
+    .lp-container, .lp-wide { width: calc(100% - 36px); }
+    .pharmacy-landing section, .pharmacy-landing main { scroll-margin-top: 90px; }
+    .lp-hero, .lp-hero-inner { min-height: 710px; }
+    .lp-hero-photo { width: 100%; height: 410px; top: auto; bottom: 0; object-position: center 30%; }
+    .lp-hero::after { background: linear-gradient(180deg, white 0%, white 37%, #fffffff5 44%, #ffffff9e 57%, #ffffff00 75%); }
+    .lp-hero-inner { align-items: flex-start; padding: 48px 5px 0; }
+    .pharmacy-landing .lp-eyebrow { font-size: 12px; margin-bottom: 15px; }
+    .lp-hero h1 { font-size: 38px; letter-spacing: -.6px; margin-bottom: 19px; }
+    .lp-hero h1 span { font-size: 29px; line-height: 1.25; }
+    .lp-hero-copy > p:not(.lp-eyebrow) { font-size: 13px; max-width: 360px; }
+    .lp-hero .lp-button { margin-top: 24px; }
+    .lp-highlights .lp-wide { grid-template-columns: 1fr 1fr; gap: 25px 15px; }
+    .lp-highlight:last-child { grid-column: 1 / -1; justify-self: center; }
+    .lp-highlight strong { font-size: 12px; }
+    .lp-highlight > .material-symbols-outlined { font-size: 32px; }
+    .lp-services { padding-top: 65px; }
+    .pharmacy-landing h2 { font-size: 30px; line-height: 1.18; }
+    .lp-section-heading > p:not(.lp-eyebrow) { font-size: 13px; margin-top: 16px; }
+    .lp-service-grid { grid-template-columns: 1fr; gap: 24px; }
+    .lp-service-card > img { aspect-ratio: 1.2; }
+    .lp-service-body { padding: 22px 22px 28px; }
+    .lp-service-body h3 { font-size: 19px; margin-bottom: 12px; }
+    .lp-service-body p { font-size: 13px; min-height: 0; }
+    .pharmacy-landing .lp-service-body .lp-button { font-size: 13px; padding-inline: 20px; }
+    .lp-about { padding-top: 80px; padding-bottom: 85px; }
+    .lp-about-intro { grid-template-columns: 1fr; gap: 35px; }
+    .lp-about-intro img { height: 290px; }
+    .lp-benefits { grid-template-columns: 1fr; gap: 30px; margin-top: 60px; }
+    .lp-benefit h3 { font-size: 18px; }
+    .lp-benefit p { font-size: 13px; }
+    .lp-reviews { padding: 90px 0 80px; clip-path: polygon(0 0, 100% 3%, 100% 100%, 0 97%); }
+    .lp-review-empty { margin: 35px auto; }
+    .lp-review-empty p { font-size: 14px; }
+    .lp-review-empty > span:last-child { font-size: 12px; }
+    .lp-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .lp-gallery img { height: 190px; }
+    .lp-gallery figure { border-radius: 12px; }
+    .lp-faq { padding-top: 80px; padding-bottom: 80px; }
+    .lp-faq h2 { font-size: 28px; }
+    .lp-questions summary { font-size: 12px; }
+    .lp-contact-banner { border-radius: 20px; padding: 30px 24px; }
+    .pharmacy-landing .lp-contact-banner h2 { font-size: 27px; }
+    .lp-contact-banner > div { min-width: 0; flex-basis: 100%; }
+    .lp-contact-status { align-items: flex-start; }
+    .lp-footer-grid { gap: 32px 22px; }
+    .lp-footer-grid > div:first-child, .lp-footer-grid > div:last-child { grid-column: 1 / -1; }
+    .lp-footer-grid .lp-brand { margin-bottom: 20px; }
+    .lp-floating-contact { right: 16px; bottom: 16px; }
+    .lp-floating-contact > span:first-child { display: none; }
+    .lp-copyright { padding-bottom: 80px; }
+}
+@media (prefers-reduced-motion: reduce) { .pharmacy-landing .lp-button { transition: none; } }

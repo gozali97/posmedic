@@ -1,0 +1,45 @@
+# Production stack: API + web. Run from this folder after copying the two .example files:
+#   cp .env.example .env && cp api.env.example api.env   # then fill in
+#   docker compose up -d --build                         # API + web, external PostgreSQL
+#   docker compose --profile db up -d --build            # also run PostgreSQL here
+# Put a TLS reverse proxy (nginx/Caddy) in front of both ports; see docs/DEPLOY.md.
+name: pos-apotek
+
+services:
+  api:
+    build: ../backend
+    restart: unless-stopped
+    env_file: api.env
+    ports:
+      - "127.0.0.1:${API_PORT:-8072}:8072"
+    volumes:
+      - storage:/app/storage
+
+  web:
+    build:
+      context: ../frontend
+      args:
+        VITE_API_URL: ${VITE_API_URL:?isi VITE_API_URL di deploy/.env}
+        VITE_STORAGE_URL: ${VITE_STORAGE_URL:?isi VITE_STORAGE_URL di deploy/.env}
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${WEB_PORT:-8080}:80"
+    depends_on:
+      - api
+
+  # Optional: `--profile db`. Set DB_HOST=db in api.env. The image ships pg_trgm (used for product search).
+  db:
+    image: postgres:17-alpine
+    profiles: ["db"]
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-pos-apotek}
+      POSTGRES_USER: ${POSTGRES_USER:-pos}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?isi POSTGRES_PASSWORD di deploy/.env}
+      TZ: Asia/Jakarta
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  storage:
+  pgdata:

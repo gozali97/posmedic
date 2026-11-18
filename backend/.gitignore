@@ -1,0 +1,5 @@
+.env
+/tmp/
+/pos-apotek-api
+/storage/logs/
+/storage/uploads/

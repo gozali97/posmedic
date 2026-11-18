@@ -1,0 +1,8 @@
+.env
+.env.*
+!.env.example
+tmp/
+storage/uploads/
+storage/logs/
+pos-apotek-api
+.air.toml
